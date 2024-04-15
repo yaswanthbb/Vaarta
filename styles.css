@@ -1,0 +1,87 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.bg-container{
+    background-color: #253C47;
+    height: 100vh;
+    font-family: "Itim", cursive;
+    padding: 50px;
+}
+.top-heading{
+    font-family: "Itim", cursive;
+    font-size: 36px;
+    color: #699CB5;
+
+}
+.login-heading{
+    font-weight: bold;
+    font-size: 40px;
+    color:#FFFF;
+}
+.login-para{
+    font-size: 30px;
+    color:#FFFF;
+}
+.login-google-container{
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border: #307ca1 2px solid;
+    max-width: 445px;
+    max-height: 47px;
+    padding: 10px;
+    justify-content: center;
+    border-radius: 10px;
+}
+.login-google-container img{
+    width: 28px;
+    height: 28px;
+}
+.login-google-heading{
+    padding-left: 15px;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: "Itim", cursive;
+    padding-top: 5px;
+}
+
+.email-line{
+    color: #699CB5;
+    padding: 10px;
+    margin-top: 25px;
+}
+
+.email-input{
+    max-width: 445px;
+    max-height: 47px;
+}
+.line1{
+    padding-right: 20px;
+}
+.line2{
+    padding-left: 20px;
+}
+.logo{
+    width: 457px;
+}
+.email-button{
+    width: 445px ;
+    height: 47px ;
+    background-color: #307ca1;
+    border-radius: 10px;
+    border-width: 0px;
+    color: white;
+    font-size: 20px;
+}
+
+.signup-para{
+    color: #ffffff;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.signup-para a{
+    color: #699CB5;
+}
