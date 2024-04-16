@@ -1,44 +1,42 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-// import { getDatabase, set, ref} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
-import { getAuth, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import { getFirestore, collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBGYtobB410Q04qHm7bGSrQBsFdgbvooyY",
-  authDomain: "vaarta-88786.firebaseapp.com",
-  databaseURL: "https://vaarta-88786-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "vaarta-88786",
-  storageBucket: "vaarta-88786.appspot.com",
-  messagingSenderId: "415232456807",
-  appId: "1:415232456807:web:3627768effc74feed73cc2"
+  // Your Firebase configuration details
 };
 
 const app = initializeApp(firebaseConfig);
-// const db = getDatabase();
 const auth = getAuth(app);
+const db = getFirestore(app);
 
+async function login(e) {
+  e.preventDefault();
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
 
-function login(e){
-    e.preventDefault()
+  try {
+    // Check if the user exists in Firestore
+    const userSnapshot = await getDocs(collection(db, "users"));
+    const user = userSnapshot.docs.find((doc) => doc.data().email === email);
 
-    var email = document.getElementById("email").value
-    var password = document.getElementById("password").value
-
-    var user ={
-        email:email,
-        password:password,
+    if (user) {
+      // Verify the password
+      if (user.data().password === password) {
+        alert("Login successful");
+        // Perform additional actions, such as redirecting the user
+      } else {
+        alert("Invalid email or password");
+      }
+    } else {
+      alert("User not found");
     }
-
-    signInWithEmailAndPassword(auth,user.email,user.password)
-    .then((success)=>{
-        alert("Login Success")
-    })
-    .catch((error)=>{
-        let errorCode = error.code;
-        let errorMessage = error.message;
-        alert(errorMessage);
-        console.error("Error:", errorCode + " " + errorMessage);
-    })
-
+  } catch (error) {
+    let errorCode = error.code;
+    let errorMessage = error.message;
+    alert(errorMessage);
+    console.error("Error:", errorCode + " " + errorMessage);
+  }
 }
 
 document.querySelector("form").addEventListener("submit", login);
